@@ -1,0 +1,145 @@
+$def with (bgcolor, hlcolor, promotext, logo, wait, dpp)
+
+<html>
+
+  <head>
+
+    <link href="static/bootstrap/css/bootstrap.css" type="text/css" rel="stylesheet">
+    <script src="static/js/jquery-1.11.2.min.js"></script>
+    <script src="static/js/spectrum.js"></script>
+    <script src="static/js/fwb.js"></script>
+    <link rel="stylesheet" href="static/css/spectrum.css" type="text/css">
+    <link rel="stylesheet" href="static/css/fwb.css" type="text/css">
+    <title>FWB Control Panel</title>
+
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-default" role="navigation">
+      <div class="container">
+	<div class="navbar-collapse collapse">
+	  <ul class="nav navbar-nav">
+	    <li><a href="/offers">Offers</a></li>
+	    <li><a href="/messaging">Messaging</a></li>
+	    <li><a href="/customers">Customer Data</a></li>
+	    <li><a href="/app">App Settings</a></li>
+	    <li><a href="/settings">Account Settings</a></li>
+	  </ul>
+	  <div class="navbar-right">
+	    <ul class="nav navbar-nav">
+	      <li><a href="/logout">Log out</a></li>
+	    </ul>
+	  </div>
+	</div>
+      </div>
+    </div>
+
+
+    <div class="col-md-10 col-md-offset-1">
+      <div class="well viewport">
+	<center><h2><u>App Settings and Branding Customization</u></h2></center>
+	<center><h6>Note: changes will not be reflected until re-loading the app.</h6></center>
+
+	
+	<div class="section-head" style="margin-top:0px;">
+	  <hr>
+	  <h3>Wait Time</h3>
+	  <h6>Set how long customers must wait between repeat check-ins</h6>
+	</div>
+
+	<div class="form-inline section-content">
+	  <input type="number" min="0" max="24" step="1" class="form-control field-inline" name="newwait" value="$wait" id="newwait">
+	  <button class="btn btn-primary" onclick="setWait($$('#newwait').val());">Save</button>
+	</div>
+
+	<div class="section-head">
+	  <hr>
+	  <h3>Dollars per Point</h3>
+	  <h6>Set whether or not points should be tied to dollars spent, and if so how many dollars should equal one point.</h6>
+	</div>
+
+	<div class="form-inline section-content">
+	  <label for="hasDPP">Points are tied to dollars</label>
+	  $if not(dpp is None):
+	      <input type="checkbox" id="hasDPP" onclick="toggleDPP($$('#hasDPP').prop('checked'));" checked="true"><br>
+	  $else:
+	  	  <input type="checkbox" id="hasDPP" onclick="toggleDPP($$('#hasDPP').prop('checked'));"><br>
+	  <label for="dppAmount">Dollars Per Point</label>
+	  $if not(dpp is None):
+	      <input type="number" min="1" max="100" step="1" class="form-control field-inline" style="width:10% !important;" id="dppAmount" value="$dpp"><br>
+	  $else:
+		<input type="number" min="1" max="100" step="1" class="form-control field-inline" style="width:10% !important;" id="dppAmount" value=10 disabled=true><br>
+	  <button class="btn btn-primary" onclick="saveDPP($$('#hasDPP').prop('checked'), $$('#dppAmount').val());">Save</button>
+	</div>
+	
+
+	<div class="section-head">
+	  <hr>
+	  <h3>Promo Text</h3>
+	  <h6>Enter some text to appear at the bottom of your device.</h6>
+	</div>
+
+	<div class="form-inline section-content">
+	  <input type="text" class="form-control field-inline" name="promotext" value="$promotext" id="promotext">
+	  <button class="btn btn-primary" onclick="savePromo($$('#promotext').val());">Save</button>
+	</div>
+
+
+	<div class="section-head" style="margin-top:0px;">
+	  <hr>
+	  <h3>Coloring</h3>
+	  <h6>Select the colors that are used on your device.</h6>
+	</div>
+
+	<div class="row" style="margin-bottom:35px;">
+	  <div class="col-md-4">
+	    <center>
+	      <p><u>Main Color</u></p>
+	      <input type="text" id="fgpicker"/>
+	      <script>
+		$$('#fgpicker').spectrum({preferredFormat:"rgb",flat:true,showInput:true,chooseText:"Save",cancelText:"", change: function(color) { saveBGcolor(color); }}).on("dragstop.spectrum", function(e,c) { document.getElementById("preview").style.background = c.toHexString(); });
+		$$('#fgpicker').spectrum("set","$bgcolor");
+	      </script>
+	    </center>
+	  </div>
+	  <div class="col-md-4">
+	    <center>
+	      <p><u>Highlight Color</u></p>
+	      <input type="text" id="bgpicker"/>
+	      <script>
+		$$('#bgpicker').spectrum({preferredFormat:"rgb",flat:true,showInput:true,chooseText:"Save",cancelText:"", change: function(color) { saveHLcolor(color); }}).on("dragstop.spectrum", function(e,c) { document.getElementById("preview").style.color = c.toHexString(); })
+		$$('#bgpicker').spectrum("set","$hlcolor");
+	      </script>
+	    </center>
+	  </div>
+	</div>
+	<div class="row">
+	  <div class="col-md-8">
+	    <center><p id="preview" class="preview">Preview</p></center>
+	    <script>
+	      document.getElementById("preview").style.color = $$('#bgpicker').spectrum("get");
+	      document.getElementById("preview").style.background = $$('#fgpicker').spectrum("get");
+	    </script>
+	    </div>
+	</div>
+
+
+	<div class="section-head">
+	  <hr>
+	  <h3>Logo Upload</h3>
+	  <h6>Upload an image to use as the logo on your device. (Max filesize 2MB)</h6>
+	</div>
+
+	<div class="section-content">
+	  <form method="POST" enctype="multipart/form-data" action="">
+	    <input type="file" id="logofile" name="logofile" class="field">
+	    <button type="submit" class="btn btn-primary">Submit</button>
+	  </form>
+	</div>
+	<center><img src="$logo" height="500" id="logo" name="logo"></img></center>
+
+      </div> <!-- End of content -->
+    </div>
+  </body>
+</html>

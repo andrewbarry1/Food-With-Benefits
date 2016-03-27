@@ -1,0 +1,167 @@
+$def with (groups,jobs)
+
+<html>
+
+  <head>
+
+    <link href="static/bootstrap/css/bootstrap.css" type="text/css" rel="stylesheet">
+    <script src="static/js/jquery-1.11.2.min.js"></script>
+    <script src="static/js/spectrum.js"></script>
+    <script src="static/js/fwb.js"></script>
+    <script>window.onload = function() { $$('#groupselect').hide(); $$('#daypicker').hide(); $$('#recurDayArea').hide(); $$('#offerattachment').hide(); $$('#offerExpHours').hide();};</script>
+    <script src="static/js/moment-with-locales.min.js"></script>
+    <script src="static/bootstrap/js/bootstrap.min.js"></script>
+    <script src="static/js/bootstrap-datetimepicker.min.js"></script>
+    <link rel="stylesheet" href="static/css/spectrum.css" type="text/css">
+    <link rel="stylesheet" href="static/css/bootstrap-datetimepicker.min.css" type="text/css">
+    <link rel="stylesheet" href="static/css/fwb.css" type="text/css">
+    <title>FWB Control Panel</title>
+
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-default" role="navigation">
+      <div class="container">
+	<div class="navbar-collapse collapse">
+	  <ul class="nav navbar-nav">
+	    <li><a href="/offers">Offers</a></li>
+	    <li><a href="/messaging">Messaging</a></li>
+	    <li><a href="/customers">Customer Data</a></li>
+	    <li><a href="/app">App Settings</a></li>
+	    <li><a href="/settings">Account Settings</a></li>
+	  </ul>
+	  <div class="navbar-right">
+	    <ul class="nav navbar-nav">
+	      <li><a href="/logout">Log out</a></li>
+	    </ul>
+	  </div>
+	</div>
+      </div>
+    </div>
+
+
+    <div class="col-md-10 col-md-offset-1">
+      <div class="well viewport">
+	<center><h2><u>Messaging Center</u></h2></center>
+
+
+	<div class="section-head">
+	  <hr>
+	  <h3>New Message</h3>
+	  <h6>Create a message to send to customers.</h6>
+	</div>
+
+	<div class="section-content">
+
+	  <div class="row">
+	    <div class="col-md-4">
+	      <center><h4><u>Content</u></h4></center>
+	      <input type="text" onkeydown="subjectLimit();" class="form-control"  style="margin-bottom:30px;" name="subject" placeholder="Subject (max 30 char)" id="subject">
+	      <input type="text" onkeydown="headerLimit();" class="form-control" style="margin-bottom:30px;"name="header" placeholder="Header (max 30 char)" id="header">
+	      <textarea rows="4" onkeydown="messageLimit();" class="form-control" style="margin-bottom:30px;"name="message" placeholder="Message (max 140 char)" id="message"></textarea>
+	    </div>
+	    <div class="col-md-4">
+	      <center><h4><u>Scheduling</u></h4></center>
+
+              <div class="input-group date" id="datetimepicker3">
+                  <input type="text" class="form-control" id="timepicker" />
+                    <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-time"></span>
+                    </span>
+                </div>
+
+	      <script>
+		$$('#timepicker').datetimepicker();
+	      </script>
+	      <div id="Recur">
+		<label for="isRecur">This message is a recurring message</label>
+		<input type="checkbox" id="isRecur" onclick="toggleRecur();"></input>
+		<div id="recurDayArea">
+		  <p>Re-Send this message every</p>
+		  <input type='number' id='recurDay' class='form-control field' min='1' max='30' step='1' value='1'></input>
+		  <p>Day(s).</p>
+		</div>
+	      </div>
+	    </div>
+
+	    <div class="col-md-4">
+	      <center><h4><u>Recipients</u></h4></center>
+	      <select style="width:90%;margin-bottom:10px;" onchange="toggleRecip();" id="recipType">
+		<option>All customers</option>
+		<option>All members of a group</option>
+		<option>All customers who have not checked in recently</option>
+	      </select>
+
+	      <div id="groupselect">
+	      <label for="group">Group</label>
+	      <select id="group" name="group" style="margin-bottom:10px;">
+	      $for group in groups:
+		     <option> $group </option>
+	      </select>
+	      </div>
+
+	      <div id="daypicker">
+		<p>Send message to customers who haven't check in within</p>
+		<input id="idleDays" type="number" min=7 max=30 step=1 value=7 class="form-control" style="width:75%;"></input>
+		<p> Days of sending the message.</p>
+	      </div>
+	    </div>
+
+	  </div>
+	  <div class="row">
+	    <div class="col-md-4">
+	      <center><h4><u>Attach an Offer</u></h4></center>
+	      <label for="attachOffer">Send an offer code with this message</label>
+	      <input type="checkbox" id="attachOffer" onclick="toggleOfferAttach();"></input>
+	      <div id="offerattachment">
+		<input type="text" onkeydown="offerNameLimit();" class="form-control"  style="margin-bottom:10px;" name="offername" placeholder="Offer Name (max 30 char)" id="offername">
+		<p> Offer expires<input id="doesExpire" type="checkbox" onclick="toggleOfferExp();"></p>
+		<div id="offerExpHours">
+		<input type="number" class="form-control" id="offerexp" min=1 max=48 value=1>
+		<p> Hour(s) after message sending</p>
+		</div>
+	      </div>
+	    </div>
+	    <div class="col-md-8">
+	      <center>
+		<h4><u>Send this Message</u></h4>
+		<button class="btn btn-success" onclick="previewMessage();">Preview</button>
+		<button class="btn btn-primary" onclick="sendMessage();">Send</button>
+	      </center>
+	    </div>
+
+	  </div>
+	</div>
+
+	<div class="section-head">
+	  <hr>
+	  <h3>Scheduled Messages</h3>
+	  <h6>Check which messages you have scheduled to send.</h6>
+	</div>
+	
+	<div class="section-content">
+	<table class="table">
+
+	  <thead><tr>
+	      <th>Send Date</th>
+	      <th>Message</th>
+	      <th>Recipients</th>
+	      <th>Recurring?</th>
+	      <th>Offer?</th>
+	      <th>Cancel</th>
+	  </tr></thead>
+	  <tbody>
+	  $for j in jobs:
+	       <tr id="$j['id']"><td>$j['send']</td><td>$j['message']</td><td>$j['recip']</td><td>$j['recur']</td><td>$j['offer']</td><td><button class="btn btn-danger" onclick="delJob($j['id']);">Cancel</button></td>
+
+
+	  </tbody>
+	</table>
+	</div>
+
+
+      </div> <!-- End of content -->
+    </div>
+  </body>
+</html>

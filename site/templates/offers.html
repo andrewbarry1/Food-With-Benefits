@@ -1,0 +1,136 @@
+$def with (groups,offers,subs,subtables)
+
+<html>
+
+  <head>
+
+    <link href="static/bootstrap/css/bootstrap.css" type="text/css" rel="stylesheet">
+    <script src="static/js/jquery-1.11.2.min.js"></script>
+    <script src="static/bootstrap/js/bootstrap.min.js"></script>
+    <script src="static/js/spectrum.js"></script>
+    <script src="static/js/fwb.js"></script>
+    <script> window.onload = function() { $$('.lookup').hide(); }; </script>
+    <link rel="stylesheet" href="static/css/spectrum.css" type="text/css">
+    <link rel="stylesheet" href="static/css/fwb.css" type="text/css">
+    <title>FWB Control Panel</title>
+
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-default" role="navigation">
+      <div class="container">
+	<div class="navbar-collapse collapse">
+	  <ul class="nav navbar-nav">
+	    <li><a href="/offers">Offers</a></li>
+	    <li><a href="/messaging">Messaging</a></li>
+	    <li><a href="/customers">Customer Data</a></li>
+	    <li><a href="/app">App Settings</a></li>
+	    <li><a href="/settings">Account Settings</a></li>
+	  </ul>
+	  <div class="navbar-right">
+	    <ul class="nav navbar-nav">
+	      <li><a href="/logout">Log out</a></li>
+	    </ul>
+	  </div>
+	</div>
+      </div>
+    </div>
+
+
+    <div class="col-md-10 col-md-offset-1">
+      <div class="well viewport">
+	<center><h2><u>Groups and Offers</u></h2></center>
+
+	<div class="section-head">
+	  <hr>
+	  <h3>Create a New Group</h3>
+	  <h6>Create a new group customers can join.</h6>
+	</div>
+
+	<form method="POST">
+	  <div class="form-inline section-content">
+	    <input type="text" class="form-control field-inline" name="groupname" placeholder="Group Name" id="groupname">
+	    <button class="btn btn-primary" type="submit">Create</button>
+	  </div>
+	</form>
+
+$ c = 0
+$for g in groups:
+     $ group = g['name']
+     $ group_id = g['group_id']
+     <div class="section-head">
+     <hr>
+     <span id="gnc-$group_id"><h3 style="display:inline;margin-right:10px;">$group</h3></span><button class="btn btn-warning btn-xs" style="margin-right:10px;" onclick="editGroup($group_id);" id="edit-$group_id">Edit</button><button class="btn btn-danger btn-xs" onclick="deleteGroup($group_id);" id="delete-$group_id">Delete</button>
+     $if (subs[c] == 1):
+     	 <a data-toggle="modal" id="mod-$group_id" data-target="#modal-$group_id"><h6>$subs[c] Customer is in this group</h6></a>
+     $else:
+	<a data-toggle="modal" id="mod-$group_id" data-target="#modal-$group_id"><h6>$subs[c] Customers are in this group</h6></a>
+
+
+     <div class="modal fade" id="modal-$group_id">
+     <div class="modal-dialog">
+     <div class="modal-content">
+     <div class="modal-header">
+     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+     <h4 class="modal-title">Customers in $group</h4>
+     </div>
+     <div class="modal-body">
+     <table class="table" id="subs-$group_id">
+     <thead>
+     <tr><th>Name</th><th>Phone Number</th><th>Email</th><th>Remove</th></tr>
+     </thead>
+     <tbody id="cbody-$group_id">
+     $for row in subtables[c]:
+     	  <tr id="c-$row['id']"><td>$row['name']</td><td>$row['pn']</td><td>$row['email']</td><td><button class="btn btn-danger btn-xs" onclick="unsub($group_id,$row['id']);">-</button></td></tr>
+     </tbody>
+     </table>
+     <button id="a-$group_id" class="btn btn-success btn-xs" onclick="newRow($group_id);">+</button>
+     </div>
+     <div class="modal-footer">
+     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+     </div>
+     </div>
+     </div>
+     </div>
+
+     <div class="modal fade" id="modal-$group_id">
+     <div class="modal-dialog">
+     <div class="modal-content">
+     <div class="modal-header">
+     <h4 class="modal-title">Customers in $g['name']</h4>
+     </div>
+     <div class="modal-content" id="modal-content-$group_id">
+     </div>
+     </div>
+     </div>
+     </div>
+
+
+     </div>
+     <div class="section-content" id="group-$group_id">
+     <center>
+     <div id="offertable-$group_id" style="width:90%;">
+     <table class="table">
+     <thead>
+     <tr><th>Name</th><th>Description</th><th>Points</th><th>Delete</th><th>Edit</th></tr>
+     <tbody id="tbody-$group_id">
+     $for offer in offers[group]:
+     	  <tr id="$offer['offer_id']"><td>$offer['name']</td><td>$offer['description']</td><td>$offer['points']</td><td><button class="btn btn-danger" onclick="deleteOffer($offer['offer_id']);">Delete</button></td><td><button class="btn btn-warning" id="edit-$offer['offer_id']" onclick="toggleEdit($offer['offer_id']);">Edit</button></tr>
+     </tbody>
+     </table>
+     </div>
+     </center>
+     <p><u>Create a new offer for this group</u></p>
+     <input type="text" class="form-control field" name="offername" placeholder="New offer name" id="offername">
+     <label for="offerpoints">Points Required</label>
+     <input type="number" min="1" max="100" step="1" value="10" class="form-control field" id="offerpoints" name="offerpoints">
+     <textarea rows="2" class="form-control field" name="description" placeholder="New offer description" id="description"></textarea>
+     <button class="btn btn-primary" onclick="createOffer($group_id);">Create Offer</button>
+     </div>
+     $ c += 1
+
+</div> <!-- End of content -->
+</div>
+</body>
+</html>

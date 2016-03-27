@@ -1,0 +1,37 @@
+.viewport {
+    padding-left:0%;
+    padding-right:0%;
+    padding-top:0%;
+}
+
+
+.section-content {
+    margin-left:5%;
+}
+
+.field {
+    width:33%!important;
+    margin-bottom:10px;
+}
+.field-inline {
+    width:33%!important;
+}
+
+.section-head {
+    width:100%;
+    margin-top:35px;
+    margin-bottom:35px;
+    padding-bottom:10px;
+    padding-left:10px;
+    background-color:#ddd;
+}
+.preview {
+    font-size:200%;
+}
+
+.pointbutton {
+    padding: 0;
+    margin: 0;
+    border: none;
+    background: none;
+}

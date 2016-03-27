@@ -1,0 +1,162 @@
+2THIS IS THE SPECIFICATION FOR THE FWB API
+Last update: 8/4/15
+
+SEND EACH JSON OBJECT INDIVIDUALLY IN THE BODY OF A REQUEST TO http://fwbapp.com/api/gateway
+
+SEND ALL MESSAGES TO THE SERVER WITH THESE PARAMETERS - note that certain requests may require more data, see below
+{
+	"username":<string username>,	// username (if ctype=2, send pin here)
+	"password":<string password>,	// password
+	"ctype":<int type>,		// client type (0 = iOS, 1 = Android, 2 = POS device, iOS)
+	"reqtpye":<string type>,	// request type (see below!)
+	"tag":<int tag>	  		// tag number (for convenient asynchronous ops?)
+}
+
+
+ALL RESPONSES WILL CONTAIN THESE
+{
+	"tag":<int tag>,		// tag number supplied by request
+	"code":<int code>,		// HTML response code (Generally, 2xx = no problem, 4xx = error, the client's fault, 5xx = error, the server's fault)
+}
+
+
+All requests no matter what will contain the above parameters. Many requests require more to be sent/received. Note that there is a request called 'validate' that any client can do, which accepts and returns nothing extra.
+
+_______________________________________________________________________
+The following requests are for ANY SYSTEM, and , and will work REGARDLESS of what ctype is (0/1/2).
+
+validate: (send and receive nothing extra)
+
+signup: send {
+	fullname: <string fullname>,	// your name
+	type: <int type>  		// type of username: 1=PN, 2=email
+}
+
+_______________________________________________________________________
+The following requests are for POS SYSTEMS ONLY, and this WILL ONLY WORK IF ctype=2
+
+addpoints: send
+{
+	"target":<string credential>,	// the phone number, email, or username of the target who just checked in
+	"type":<int type>		// credential type. 0=app,1=pn,2=email
+}
+addpoints: receive
+{
+	"name":<string name>,		// the full name of the target
+	"offers":[     			// list of offers (based on subbed groups)
+		[<string name>,<string desc>,<int points>,<int id>],[],...]
+	"points":<int points>,		// the target's new point total
+	"id":<int acc_id>		// the acc_id of the target
+}
+
+
+usecode: send
+{
+	"id":<int id>,			// the 4-digit id of the store
+	"code":<string code>		// the coupon code
+}
+usecode: receive
+{
+	"offer":<string offer>		// the name of the offer the coupon was for
+}
+
+
+getbrand: receive
+{
+	"logo":<string url>,		// a url leading to the account's logo image
+	"promo":<string promo>,		// promo text to display on the login page
+	"color":[<int r>,<g>,<b>],	// r,g,b values for color of the background color
+	"highlight":[<int r>,<g>,<b>],	// r,g,b values for highlighting color
+	"name":<string storename>,	// name of the store
+	"dollars":<bool ask>		// whether or not to prompt for dollar value
+}
+
+makecode: send
+{
+	"id":<int id>,			// the offer's id
+	"target":<int target_id>	// target's acc_id
+}
+makecode: receive
+{
+	"points":<int points>,		// target's new point count at the store
+	"name":<string name>,		// target's name
+}
+
+_______________________________________________________________________
+The following requests are END USER APP ONLY, meaning THEY WILL ONLY WORK IF ctype=0 OR ctype=1
+
+
+getmystores: receive
+{
+	"stores":[			// an array of visited store names
+		<string name,int store_id>, // store name, store's acc_id
+		<>,<>,...]
+}
+
+
+getoffers: send
+{
+	"group":<string group>		// the group you're getting info about
+}
+getoffers: receive
+{
+	"offers":[			// an array of arrays containing the name,description, and ID of offers
+		[<string name>, <string desc>, <int offer_id>],
+		[],[],...]
+}
+
+
+getmygroups: receive
+{
+	"groups":[			// an array of arrays containing the name of the group, id of the group, and name/id of the owner
+		[<string name>,[<string owner>,<int owner_id>],<int group_id>],
+		[],[],...]
+}
+
+
+getgroups: send
+{
+	"owner":<id owner_id>		// id of the store owner
+}
+getgroups: receive
+{
+	"groups":[			// array of arrays, each with name of group and its group_id
+		[<string name>,<int group_id>],
+		[],...]
+}
+
+getpoints: send
+{
+	"store":<int store_id>>		// the store_id of the store
+}
+getpoints: receive
+{
+	"points":<int points>		// your points at the requested store
+}
+
+
+subscribe: send
+{
+	"group":<int group_id>,		// the id of the group
+}
+
+
+unsubscribe: send
+{
+	"group":<int goup_id>,		// the id of the group
+}
+
+
+registerparse: send
+{
+	"id":<string parseid>		// parse installation object ID of the phone just logged into
+}
+
+deregisterparse: (send and receive nothing extra)
+
+getsettings: receive
+{
+	"pn":<string pn>,		// phone number of the user, key will not be sent if none entered
+	"email":<string email>,		// email of the user, keyw ill not be sent if none entered
+	"msgval":<int msgval>		// msgval of the user (still under consideration)
+}

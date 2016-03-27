@@ -1,0 +1,81 @@
+$def with (pin, name)
+
+<html>
+
+  <head>
+
+    <link href="static/bootstrap/css/bootstrap.css" type="text/css" rel="stylesheet">
+    <script src="static/js/jquery-1.11.2.min.js"></script>
+    <script src="static/js/spectrum.js"></script>
+    <script src="static/js/fwb.js"></script>
+    <link rel="stylesheet" href="static/css/spectrum.css" type="text/css">
+    <link rel="stylesheet" href="static/css/fwb.css" type="text/css">
+    <title>FWB Control Panel</title>
+
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-default" role="navigation">
+      <div class="container">
+	<div class="navbar-collapse collapse">
+	  <ul class="nav navbar-nav">
+	    <li><a href="/offers">Offers</a></li>
+	    <li><a href="/messaging">Messaging</a></li>
+	    <li><a href="/customers">Customer Data</a></li>
+	    <li><a href="/app">App Settings</a></li>
+	    <li><a href="/settings">Account Settings</a></li>
+	  </ul>
+	  <div class="navbar-right">
+	    <ul class="nav navbar-nav">
+	      <li><a href="/logout">Log out</a></li>
+	    </ul>
+	  </div>
+	</div>
+      </div>
+    </div>
+
+
+    <div class="col-md-10 col-md-offset-1">
+      <div class="well viewport">
+	<center><h2><u>Account Settings</u></h2></center>
+
+	<div class="section-head">
+	  <hr>
+	  <h3>Store Name</h3>
+	  <h6>Set the name of your store.</h6>
+	</div>
+
+	<div class="form-inline section-content">
+	  <input type="text" class="form-control field-inline" name="storename" placeholder="$name" id="storename">
+	  <button class="btn btn-primary" onclick='setStorename(document.getElementById("storename").value);'>Save</button>
+	</div>
+
+	<div class="section-head">
+	  <hr>
+	  <h3>PIN</h3>
+	  <h6>This four-digit number is used to sign in to the app and redeem coupons.</h6>
+	</div>
+
+	<div class="form-inline section-content">
+	  <input type="text" class="form-control field-inline" name="newpin" placeholder="$pin" id="newpin">
+	  <button class="btn btn-primary" onclick='setPin(document.getElementById("newpin").value);'>Save</button>
+	</div>
+
+	<div class="section-head">
+	  <hr>
+	  <h3>Password</h3>
+	  <h6>This password is used to sign in to the website. Min. 8 characters</h6>
+	</div>
+
+	<div class="form section-content">
+	  <input type="password" class="form-control field" name="newpass" placeholder="New password" id="newpass">
+	  <input type="password" class="form-control field" name="checkpass" placeholder="(Type again to confirm)" id="checkpass">
+	  <button class="btn btn-primary" onclick='setPasswd(document.getElementById("newpass").value,document.getElementById("checkpass").value);'>Save</button>
+	</div>
+
+
+      </div> <!-- End of content -->
+    </div>
+  </body>
+</html>

@@ -1,0 +1,114 @@
+The Database
+Last update: 8/4/15
+
+table endusers
+      acc_id INT primary key nextval('counter_users')
+      phonenumber BIGINT
+      parseobj TEXT
+      msgval SMALLINT (7 = none, % 2 = pn, %3 = email, %5 = app)
+      email TEXT
+      fullname TEXT
+      password TEXT
+
+table stores
+      acc_id INT primary key nextval('counter_stores')
+      name TEXT
+      password TEXT
+      waittime SMALLINT
+      pin SMALLINT
+      logo TEXT
+      promo TEXT
+      color INTEGER[3]
+      highlight INTEGER[3]
+      primchan INT
+      template TEXT
+      stopcode VARCHAR(5)
+      ip TEXT
+      dpp SMALLINT
+
+table groups
+      name TEXT
+      owner INT references stores(acc_id)
+      group_id INT primary key default nextval('group_ids')
+
+table subscriptions
+      acc_id INT references endusers(acc_id)
+      groups INT[]
+      unsubs INT[]
+
+table points
+      acc_id INT references endusers(acc_id)
+      stores INT[]
+      counts SMALLINT[]
+
+table offers
+      group_owner INT
+      name TEXT
+      description TEXT
+      expiration INT (hours after coupon creation)
+      points INT
+      offer_id INT primary key default nextval('offer_ids')
+
+table transactions
+      time INT
+      acc_id INT references endusers(acc_id)
+      store INT references stores(acc_id)
+      notes TEXT
+
+table coupons
+      acc_id INT references endusers(acc_id)
+      code BIGINT
+      store_id INT references stores(acc_id)
+      offer_id INT references offers(offer_id)
+      exp INT (actual time of expiration)
+
+table sessions
+      session_id CHARACTER(40) primary key
+      atime TIMESTAMP without time zone nut null default current_timestamp
+      data TEXT
+
+table redemptions
+      acc_id INT references endusers(acc_id)
+      store INT references stores(acc_id)
+      time TIMESTAMP default current_timestamp
+      name text
+
+create table mail_jobs (job_id INT primary key default nextval('job_ids'), mailer_id int references stores(acc_id), subject varchar(30), header varchar(30), message varchar(140), send int, recur int, offer int, ttype int, tinfo text, recur_count INT);
+
+table mail_jobs
+      job_id INT primary key default nextval('job_ids')
+      mailer_id INT references stores(acc_id)
+      subject VARCHAR(30)
+      header VARCHAR(30)
+      message VARCHAR(140)
+      send INT
+      recur INT
+      offer INT references offers(offer_id)
+      ttype INT
+      tinfo TEXT
+
+
+sequence counter_users
+	start 1
+	step 1
+	end (2^63)-1
+sequence counter_stores
+	start 1
+	step 1
+	end (2^63)-1
+sequence unsub_code
+	 start 1
+	 step 1
+	 end (2^63)-1
+sequence group_ids
+	 start 1
+	 step 1
+	 end (2^63)-1
+sequence offer_ids
+	 start 1
+	 step 1
+	 end (2^63)-1
+sequence job_ids
+	 start 1
+	 step 1
+	 end (2^63)-1

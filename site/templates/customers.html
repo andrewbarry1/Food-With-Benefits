@@ -1,0 +1,93 @@
+$def with (acc_id)
+
+<html>
+
+  <head>
+
+    <link href="static/bootstrap/css/bootstrap.css" type="text/css" rel="stylesheet">
+    <script src="static/js/jquery-1.11.2.min.js"></script>
+    <script src="static/js/spectrum.js"></script>
+    <script src="static/js/fwb.js"></script>
+    <script src="static/js/sorttable.js"></script>
+    <script src="static/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="static/css/spectrum.css" type="text/css">
+    <link rel="stylesheet" href="static/css/fwb.css" type="text/css">
+    <title>FWB Control Panel</title>
+
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-default" role="navigation">
+      <div class="container">
+	<div class="navbar-collapse collapse">
+	  <ul class="nav navbar-nav">
+	    <li><a href="/offers">Offers</a></li>
+	    <li><a href="/messaging">Messaging</a></li>
+	    <li><a href="/customers">Customer Data</a></li>
+	    <li><a href="/app">App Settings</a></li>
+	    <li><a href="/settings">Account Settings</a></li>
+	  </ul>
+	  <div class="navbar-right">
+	    <ul class="nav navbar-nav">
+	      <li><a href="/logout">Log out</a></li>
+	    </ul>
+	  </div>
+	</div>
+      </div>
+    </div>
+    <input type="hidden" id="acc_id" value="$acc_id">
+
+
+    <div class="col-md-10 col-md-offset-1">
+      <div class="well viewport">
+	<center><h2><u>Customer Data</u></h2></center>
+
+	<div class="section-content">
+	  <input type="hidden" value=1 id="page">
+	  <label for="tabletype">Select Table</label>
+	  <select id="tabletype" onchange="loadTable(this.selectedIndex,document.getElementById('page').value);">
+	    <option>History</option>
+	    <option>All Customers</option>
+	    <option>Coupon Redemptions</option>
+	  </select>
+
+	  <div id="controls">
+	  <!-- Filter controls appear here if necessary, also a download as csv button -->
+	  <form method="POST" action="gencsv">
+	    <input type="hidden" id="ttype" name="ttype"></input>
+	    <button id="csvButton" name="csvButton" class="btn btn-primary">Download all as .csv</button>
+	  </form>
+	  </div>
+
+	  <div id="tabledisplay">
+	  <!-- Actual table appears here -->
+	  </div>
+
+	</div>
+	<script>
+	  var i = document.getElementById("tabletype");
+	  window.onload = loadTable(i.selectedIndex,1);
+	</script>
+
+	<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
+	  <div class="modal-dialog modal-sm">
+	    <div class="modal-content">
+	      <div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		<h4 class="modal-title" id="myModalLabel">Add/Drop Groups</h4>
+	      </div>
+	      <div class="modal-body" id="modal-body">
+	      </div>
+	      <div class="modal-footer">
+		<button type="button" onclick="document.getElementById('modal-body').innerHTML = '';" class="btn btn-default" data-dismiss="modal">Close</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+
+      </div> <!-- End of content -->
+    </div>
+  </body>
+</html>
