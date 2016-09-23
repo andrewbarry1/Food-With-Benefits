@@ -23,15 +23,11 @@ def sendMsg(cursor,acc_id,store_id,subject,header,message,template,msgval = -1):
     if msgval == -1:
         cursor.execute("SELECT msgval FROM endusers WHERE acc_id = %s",(acc_id,))
         msgval = cursor.fetchone()[0]
-    push = False
-    email = False
-    text = False
-    if (msgval % 2 == 0):
-        text = True
-    if (msgval % 3 == 0):
-        email = True
-    if (msgval % 5 == 0):
-        push = True
+    # cleaning bool logic
+    push = msgval % 2 == 0
+    email = msgval % 3 == 0
+    text = msgval % 5 == 0
+
     if (push): # parse code (TODO)
         pass
     if (email): # sendgrid code
@@ -51,7 +47,7 @@ def sendMsg(cursor,acc_id,store_id,subject,header,message,template,msgval = -1):
         template_lines = template_file.readlines()
         template_file.close()
         message.replace("\n","<br>")
-        for line in template_lines: 
+        for line in template_lines:
             html += line.replace("msgheader",header).replace("msgcontent",message).replace("unsuburl",unsub_link).replace("storename",store_name)
         mail.set_html(html)
         sg.send(mail)
