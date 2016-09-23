@@ -1,0 +1,507 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B3443C511ACF6B7A0086A1AF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3443C501ACF6B7A0086A1AF /* LoginViewController.swift */; };
+		B35CB05D1ACA302800E8B4B7 /* PhoneNumberFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = B35CB05C1ACA302800E8B4B7 /* PhoneNumberFormatter.m */; };
+		B3BA5E301AC8E863007CA91F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BA5E2F1AC8E863007CA91F /* AppDelegate.swift */; };
+		B3BA5E321AC8E863007CA91F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BA5E311AC8E863007CA91F /* ViewController.swift */; };
+		B3BA5E351AC8E864007CA91F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3BA5E331AC8E864007CA91F /* Main.storyboard */; };
+		B3BA5E371AC8E864007CA91F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3BA5E361AC8E864007CA91F /* Images.xcassets */; };
+		B3BA5E3A1AC8E864007CA91F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3BA5E381AC8E864007CA91F /* LaunchScreen.xib */; };
+		B3BA5E461AC8E864007CA91F /* FWB_POSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BA5E451AC8E864007CA91F /* FWB_POSTests.swift */; };
+		B3D0E6511D95995600F99F73 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D0E6501D95995600F99F73 /* SwiftyJSON.framework */; };
+		B3D0E6531D95996000F99F73 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D0E6521D95996000F99F73 /* Alamofire.framework */; };
+		B3EA30291AD9AB42003DE7B2 /* SelectCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EA30281AD9AB41003DE7B2 /* SelectCodeViewController.swift */; };
+		B3EA302B1AD9AD48003DE7B2 /* CodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EA302A1AD9AD48003DE7B2 /* CodeCell.swift */; };
+		B3EA302E1AD9CA37003DE7B2 /* KTCenterFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EA302D1AD9CA37003DE7B2 /* KTCenterFlowLayout.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B3BA5E401AC8E864007CA91F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B3BA5E221AC8E863007CA91F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B3BA5E291AC8E863007CA91F;
+			remoteInfo = "FWB POS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B3443C501ACF6B7A0086A1AF /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		B35CB05B1ACA302700E8B4B7 /* FWB POS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FWB POS-Bridging-Header.h"; sourceTree = "<group>"; };
+		B35CB05C1ACA302800E8B4B7 /* PhoneNumberFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneNumberFormatter.m; sourceTree = "<group>"; };
+		B35CB05E1ACA303400E8B4B7 /* PhoneNumberFormatter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhoneNumberFormatter.h; sourceTree = "<group>"; };
+		B3BA5E2A1AC8E863007CA91F /* Food With Benefits.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Food With Benefits.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3BA5E2E1AC8E863007CA91F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B3BA5E2F1AC8E863007CA91F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B3BA5E311AC8E863007CA91F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B3BA5E341AC8E864007CA91F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B3BA5E361AC8E864007CA91F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		B3BA5E391AC8E864007CA91F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		B3BA5E3F1AC8E864007CA91F /* Food With BenefitsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Food With BenefitsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3BA5E441AC8E864007CA91F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B3BA5E451AC8E864007CA91F /* FWB_POSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWB_POSTests.swift; sourceTree = "<group>"; };
+		B3D0E6501D95995600F99F73 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
+		B3D0E6521D95996000F99F73 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		B3EA30281AD9AB41003DE7B2 /* SelectCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectCodeViewController.swift; sourceTree = "<group>"; };
+		B3EA302A1AD9AD48003DE7B2 /* CodeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeCell.swift; sourceTree = "<group>"; };
+		B3EA302C1AD9CA37003DE7B2 /* KTCenterFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTCenterFlowLayout.h; sourceTree = "<group>"; };
+		B3EA302D1AD9CA37003DE7B2 /* KTCenterFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KTCenterFlowLayout.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B3BA5E271AC8E863007CA91F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B3D0E6511D95995600F99F73 /* SwiftyJSON.framework in Frameworks */,
+				B3D0E6531D95996000F99F73 /* Alamofire.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B3BA5E3C1AC8E864007CA91F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		77F38DD02D0410F401DA50D6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B3D0E6521D95996000F99F73 /* Alamofire.framework */,
+				B3D0E6501D95995600F99F73 /* SwiftyJSON.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B3BA5E211AC8E863007CA91F = {
+			isa = PBXGroup;
+			children = (
+				B3BA5E2C1AC8E863007CA91F /* FWB POS */,
+				B3BA5E421AC8E864007CA91F /* FWB POSTests */,
+				B3BA5E2B1AC8E863007CA91F /* Products */,
+				77F38DD02D0410F401DA50D6 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		B3BA5E2B1AC8E863007CA91F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B3BA5E2A1AC8E863007CA91F /* Food With Benefits.app */,
+				B3BA5E3F1AC8E864007CA91F /* Food With BenefitsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B3BA5E2C1AC8E863007CA91F /* FWB POS */ = {
+			isa = PBXGroup;
+			children = (
+				B3BA5E2F1AC8E863007CA91F /* AppDelegate.swift */,
+				B3BA5E311AC8E863007CA91F /* ViewController.swift */,
+				B3EA30281AD9AB41003DE7B2 /* SelectCodeViewController.swift */,
+				B3EA302A1AD9AD48003DE7B2 /* CodeCell.swift */,
+				B3443C501ACF6B7A0086A1AF /* LoginViewController.swift */,
+				B3BA5E331AC8E864007CA91F /* Main.storyboard */,
+				B3BA5E361AC8E864007CA91F /* Images.xcassets */,
+				B3BA5E381AC8E864007CA91F /* LaunchScreen.xib */,
+				B3BA5E2D1AC8E863007CA91F /* Supporting Files */,
+				B35CB05B1ACA302700E8B4B7 /* FWB POS-Bridging-Header.h */,
+				B35CB05E1ACA303400E8B4B7 /* PhoneNumberFormatter.h */,
+				B35CB05C1ACA302800E8B4B7 /* PhoneNumberFormatter.m */,
+				B3EA302C1AD9CA37003DE7B2 /* KTCenterFlowLayout.h */,
+				B3EA302D1AD9CA37003DE7B2 /* KTCenterFlowLayout.m */,
+			);
+			path = "FWB POS";
+			sourceTree = "<group>";
+		};
+		B3BA5E2D1AC8E863007CA91F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B3BA5E2E1AC8E863007CA91F /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B3BA5E421AC8E864007CA91F /* FWB POSTests */ = {
+			isa = PBXGroup;
+			children = (
+				B3BA5E451AC8E864007CA91F /* FWB_POSTests.swift */,
+				B3BA5E431AC8E864007CA91F /* Supporting Files */,
+			);
+			path = "FWB POSTests";
+			sourceTree = "<group>";
+		};
+		B3BA5E431AC8E864007CA91F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B3BA5E441AC8E864007CA91F /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B3BA5E291AC8E863007CA91F /* Food With Benefits */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B3BA5E491AC8E864007CA91F /* Build configuration list for PBXNativeTarget "Food With Benefits" */;
+			buildPhases = (
+				B3BA5E261AC8E863007CA91F /* Sources */,
+				B3BA5E271AC8E863007CA91F /* Frameworks */,
+				B3BA5E281AC8E863007CA91F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Food With Benefits";
+			productName = "FWB POS";
+			productReference = B3BA5E2A1AC8E863007CA91F /* Food With Benefits.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B3BA5E3E1AC8E864007CA91F /* Food With BenefitsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B3BA5E4C1AC8E864007CA91F /* Build configuration list for PBXNativeTarget "Food With BenefitsTests" */;
+			buildPhases = (
+				B3BA5E3B1AC8E864007CA91F /* Sources */,
+				B3BA5E3C1AC8E864007CA91F /* Frameworks */,
+				B3BA5E3D1AC8E864007CA91F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B3BA5E411AC8E864007CA91F /* PBXTargetDependency */,
+			);
+			name = "Food With BenefitsTests";
+			productName = "FWB POSTests";
+			productReference = B3BA5E3F1AC8E864007CA91F /* Food With BenefitsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B3BA5E221AC8E863007CA91F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = Barsoft;
+				TargetAttributes = {
+					B3BA5E291AC8E863007CA91F = {
+						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = A8C4HNQ38S;
+						LastSwiftMigration = 0800;
+					};
+					B3BA5E3E1AC8E864007CA91F = {
+						CreatedOnToolsVersion = 6.2;
+						TestTargetID = B3BA5E291AC8E863007CA91F;
+					};
+				};
+			};
+			buildConfigurationList = B3BA5E251AC8E863007CA91F /* Build configuration list for PBXProject "Food With Benefits" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B3BA5E211AC8E863007CA91F;
+			productRefGroup = B3BA5E2B1AC8E863007CA91F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B3BA5E291AC8E863007CA91F /* Food With Benefits */,
+				B3BA5E3E1AC8E864007CA91F /* Food With BenefitsTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B3BA5E281AC8E863007CA91F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B3BA5E351AC8E864007CA91F /* Main.storyboard in Resources */,
+				B3BA5E3A1AC8E864007CA91F /* LaunchScreen.xib in Resources */,
+				B3BA5E371AC8E864007CA91F /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B3BA5E3D1AC8E864007CA91F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B3BA5E261AC8E863007CA91F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B3443C511ACF6B7A0086A1AF /* LoginViewController.swift in Sources */,
+				B3EA302E1AD9CA37003DE7B2 /* KTCenterFlowLayout.m in Sources */,
+				B3BA5E321AC8E863007CA91F /* ViewController.swift in Sources */,
+				B35CB05D1ACA302800E8B4B7 /* PhoneNumberFormatter.m in Sources */,
+				B3EA30291AD9AB42003DE7B2 /* SelectCodeViewController.swift in Sources */,
+				B3BA5E301AC8E863007CA91F /* AppDelegate.swift in Sources */,
+				B3EA302B1AD9AD48003DE7B2 /* CodeCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B3BA5E3B1AC8E864007CA91F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B3BA5E461AC8E864007CA91F /* FWB_POSTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B3BA5E411AC8E864007CA91F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B3BA5E291AC8E863007CA91F /* Food With Benefits */;
+			targetProxy = B3BA5E401AC8E864007CA91F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B3BA5E331AC8E864007CA91F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B3BA5E341AC8E864007CA91F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B3BA5E381AC8E864007CA91F /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B3BA5E391AC8E864007CA91F /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B3BA5E471AC8E864007CA91F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B3BA5E481AC8E864007CA91F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B3BA5E4A1AC8E864007CA91F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = "FWB POS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Barsoft.fwbpos;
+				PRODUCT_NAME = "Food With Benefits";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "FWB POS/FWB POS-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B3BA5E4B1AC8E864007CA91F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = "FWB POS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Barsoft.fwbpos;
+				PRODUCT_NAME = "Food With Benefits";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "FWB POS/FWB POS-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		B3BA5E4D1AC8E864007CA91F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "FWB POSTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Barsoft.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "Food With BenefitsTests";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FWB POS.app/FWB POS";
+			};
+			name = Debug;
+		};
+		B3BA5E4E1AC8E864007CA91F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "FWB POSTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Barsoft.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "Food With BenefitsTests";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FWB POS.app/FWB POS";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B3BA5E251AC8E863007CA91F /* Build configuration list for PBXProject "Food With Benefits" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B3BA5E471AC8E864007CA91F /* Debug */,
+				B3BA5E481AC8E864007CA91F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B3BA5E491AC8E864007CA91F /* Build configuration list for PBXNativeTarget "Food With Benefits" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B3BA5E4A1AC8E864007CA91F /* Debug */,
+				B3BA5E4B1AC8E864007CA91F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B3BA5E4C1AC8E864007CA91F /* Build configuration list for PBXNativeTarget "Food With BenefitsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B3BA5E4D1AC8E864007CA91F /* Debug */,
+				B3BA5E4E1AC8E864007CA91F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B3BA5E221AC8E863007CA91F /* Project object */;
+}
