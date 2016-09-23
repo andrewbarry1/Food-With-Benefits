@@ -3,7 +3,7 @@
 //  FWB POS
 //
 //  Created by Ben Grass on 3/29/15.
-//  Copyright (c) 2015 Barsoft. All rights reserved.
+//  Copyright (c) 2015-16 Barsoft. All rights reserved.
 //
 
 //TODO, KEYBOARD FUNCTIONALITY STUFF, DISMISSING BY PRESSING BLANK SPACE, ETC. LEGGO BAYBEE

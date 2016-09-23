@@ -3,7 +3,7 @@
 //  FWB POS
 //
 //  Created by Ben Grass on 3/29/15.
-//  Copyright (c) 2015 Barsoft. All rights reserved.
+//  Copyright (c) 2015-16 Barsoft. All rights reserved.
 //
 
 import UIKit

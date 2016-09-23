@@ -1,6 +1,6 @@
 //
 // Created by Ben Grass on 8/20/14.
-// Copyright (c) 2014 BARSOFT. All rights reserved.
+// Copyright (c) 2014-16 BARSOFT. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
